@@ -132,6 +132,7 @@ void merge_sort(It f, It l) {
 
 
 // It models BidirectionalIterator
+// Elem is element type of It
 // permutes the elements in [f, l)
 // and returns p such that
 // [f, p) < val <= [p, l) 
@@ -143,6 +144,7 @@ It partition_(It f, It l, Elem val) {
 }
 
 // It models BidirectionalIterator
+// Elem is element type of It
 // permutes the elements in [f, l)
 // and returns p such that
 // [f, p) < val <= [p, l) 
@@ -154,6 +156,7 @@ It partition(It f, It l, Elem val) {
 }
 
 // It models RandomAcessIterator
+// Elem is element type of It
 // permutes the elements in [f, l)
 // and returns p such that
 // [f, p) < val <= [p, l)
@@ -190,5 +193,39 @@ void quicksort(It f, It l) {
     pivot = rotate(f, pivot, cut); // pivot in place 
     quicksort_(f, pivot);
     f = cut;
+  }
+}
+
+// It models BidirectionalIterator
+// Elem is element type of It
+// permutes the elements in [f, l)
+// such that is_sorted(f, l)
+It partition_order(It f, It l, Elem val) {
+  if (!(f == l)) --l;
+  while(!(f == l)) {
+    while (!(f == l) && *f < val) ++f;
+    while (!(f == l) && *l > val) --l;
+    swap(f, l);
+  }
+  return f;
+}
+
+// It models BidirectionalIterator
+// permutes the elements in [f, l)
+// such that is_sorted(f, l)
+void quicksort_order_(It f, It l) {
+  if (f == l) return;
+  It cut = partition_order(f, l, *f);
+  quicksort_order_(f, cut);
+  quicksort_order_(++cut, l);
+}
+
+// It models BidirectionalIterator
+// permutes the elements in [f, l)
+// such that is_sorted(f, l)
+void quicksort_order(It f, It l) {
+  for (It cut = f; !(f == l); f = ++cut) {
+    cut = partition_order(f, l, *f);
+    quicksort_order(f, cut);
   }
 }

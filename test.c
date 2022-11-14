@@ -84,12 +84,23 @@ int main(int argc, const char* argv[]) {
   copy(notsort, notsort + 6, sorts);
   quicksort_(sorts, sorts + 6);
   print(sorts, sorts + 6);
-  assert(is_sorted(sorts, sorts + 6));  
+  assert(is_sorted(sorts, sorts + 6));
   
   copy(notsort, notsort + 6, sorts);
   quicksort(sorts, sorts + 6);
   print(sorts, sorts + 6);
-  assert(is_sorted(sorts, sorts + 6));  
+  assert(is_sorted(sorts, sorts + 6));
+
+  copy(notsort, notsort + 6, sorts);
+  quicksort_order_(sorts, sorts + 6);
+  print(sorts, sorts + 6);
+  assert(is_sorted(sorts, sorts + 6));
+  
+  copy(notsort, notsort + 6, sorts);
+  quicksort_order(sorts, sorts + 6);
+  print(sorts, sorts + 6);
+  assert(is_sorted(sorts, sorts + 6));
+
   
   return 0;
 }
