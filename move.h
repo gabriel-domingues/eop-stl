@@ -24,3 +24,16 @@ It rotate(It f, It m, It l) {
   reverse(f, l);
   return f + (l - m);
 }
+
+It copy(It f, It l, It out) {
+  for (; !(f == l); ++out, ++f)
+    *out = *f;
+  return out;
+}
+
+It buffer(ptrdiff_t n) {
+  assert(n > 0);
+  It buff = (It) malloc(n * sizeof(Elem));
+  if (buff == NULL) exit(1);
+  return buff;
+}

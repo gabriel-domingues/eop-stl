@@ -5,6 +5,8 @@
  */
 
 #include <stdbool.h>
+#include <stddef.h>
+#include <stdlib.h>
 
 It print(It f, It l) {
   for (It it = f; it != l; ++it)

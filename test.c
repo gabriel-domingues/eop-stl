@@ -29,29 +29,67 @@ int main(int argc, const char* argv[]) {
 
   assert(is_sorted_(none, none + 6));
   assert(is_sorted(none, none + 6));
-  
-  int notsort_1[6] = {6, 5, 4, 3, 2, 1};
-  print(notsort_1, notsort_1 + 6);
-  
-  binary_insertion_sort_(notsort_1, notsort_1 + 6);
-  print(notsort_1, notsort_1 + 6);
-  assert(is_sorted(notsort_1, notsort_1 + 6));
 
-  int notsort_2[6] = {6, 5, 4, 3, 2, 1};
-  binary_insertion_sort(notsort_2, notsort_2 + 6);
-  print(notsort_2, notsort_2 + 6);
-  assert(is_sorted(notsort_2, notsort_2 + 6));
+  int notsort[6] = {6, 5, 4, 2, 3, 1};
+  int sorts[6] = {6, 5, 4, 2, 3, 1};
+
+  copy(notsort, notsort + 6, sorts);
+  binary_insertion_sort_(sorts, sorts + 6);
+  print(sorts, sorts + 6);
+  assert(is_sorted(sorts, sorts + 6));
   
-  int notsort_3[6] = {6, 5, 4, 3, 2, 1};
-  insertion_sort_(notsort_3, notsort_3 + 6);
-  print(notsort_3, notsort_3 + 6);
-  assert(is_sorted(notsort_3, notsort_3 + 6));
+  copy(notsort, notsort + 6, sorts);
+  binary_insertion_sort(sorts, sorts + 6);
+  print(sorts, sorts + 6);
+  assert(is_sorted(sorts, sorts + 6));
+
+  copy(notsort, notsort + 6, sorts);
+  insertion_sort_(sorts, sorts + 6);
+  print(sorts, sorts + 6);
+  assert(is_sorted(sorts, sorts + 6));
   
-  int notsort_4[6] = {6, 5, 4, 3, 2, 1};
-  insertion_sort(notsort_4, notsort_4 + 6);
-  print(notsort_4, notsort_4 + 6);
-  assert(is_sorted(notsort_4, notsort_4 + 6));
+  copy(notsort, notsort + 6, sorts);
+  insertion_sort(sorts, sorts + 6);
+  print(sorts, sorts + 6);
+  assert(is_sorted(sorts, sorts + 6));
   
+  copy(notsort, notsort + 6, sorts);
+  merge_sort_(sorts, sorts + 6);
+  print(sorts, sorts + 6);
+  assert(is_sorted(sorts, sorts + 6));
+  
+  copy(notsort, notsort + 6, sorts);
+  merge_sort(sorts, sorts + 6);
+  print(sorts, sorts + 6);
+  assert(is_sorted(sorts, sorts + 6));
+
+  copy(notsort, notsort + 6, sorts);
+  It p_ = partition_(sorts, sorts + 6, 4);
+  printf("%ld : ", p_ - sorts);
+  print(sorts, sorts + 6);
+  assert(p_ == sorts + 3);
+  
+  copy(notsort, notsort + 6, sorts);
+  It p = partition(sorts, sorts + 6, 4);
+  printf("%ld : ", p - sorts);
+  print(sorts, sorts + 6);
+  assert(p == sorts + 3);
+  
+  copy(notsort, notsort + 6, sorts);
+  It sp_ = stable_partition_(sorts, sorts + 6, 4);
+  printf("%ld : ", sp_ - sorts);
+  print(sorts, sorts + 6);
+  assert(sp_ == sorts + 3);
+
+  copy(notsort, notsort + 6, sorts);
+  quicksort_(sorts, sorts + 6);
+  print(sorts, sorts + 6);
+  assert(is_sorted(sorts, sorts + 6));  
+  
+  copy(notsort, notsort + 6, sorts);
+  quicksort(sorts, sorts + 6);
+  print(sorts, sorts + 6);
+  assert(is_sorted(sorts, sorts + 6));  
   
   return 0;
 }
